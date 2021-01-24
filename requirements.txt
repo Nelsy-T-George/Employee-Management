@@ -1,0 +1,43 @@
+Django==2.2
+djangorestframework==3.9.4
+xlwt==1.3.0     -  pip3 install xlwt
+django-crontab  -  pip3 install django-crontab(for store the excel in system on weekily bases)
+
+Super user
+-----------
+Username  :admin
+password   :admin123
+
+First create all the roles
+Then add employees
+
+Rest API
+--------
+Task Create api
+        - http://127.0.0.1:8000/employee/task/<str:id>/create/
+        Add employee id in url(Taken from db)
+        eg:http://127.0.0.1:8000/employee/task/3/create/
+Task List api
+        -http://127.0.0.1:8000/employee/task/<str:id>/list/
+        eg :http://127.0.0.1:8000/employee/task/3/list/
+Role Based access of Task by super user Api
+        - http://127.0.0.1:8000/super-admin/task/<str:role>/list/
+        eg :http://127.0.0.1:8000/super-admin/task/Software Developer/list/
+
+Adding Comment by Super user on Task
+        - http://127.0.0.1:8000/comments/<str:id>/create/
+        eg: http://127.0.0.1:8000/comments/10/create/
+
+
+The system should automatically create excel sheets on a weekly basis
+        -run this command to add all defined jobs from CRONJOBS to crontab (of the user which you are running this command with)
+                python manage.py crontab add
+                After this command run -Python manage.py runserver command
+        -show current active jobs of this project:
+                python manage.py crontab show
+        -removing all defined jobs is straight forward
+                python manage.py crontab remove
+
+
+
+
