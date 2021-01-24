@@ -40,7 +40,7 @@ class TaskSerializer(ModelSerializer):
         fields = ('id', 'title', 'description', 'priority','time', 'start_date',
                   'end_date','is_status')
 
-class CommentSerializer(ModelSerializer):
+class CommentsSerializer(ModelSerializer):
 
     class Meta:
         model = Comments

@@ -13,7 +13,7 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView,
                                      RetrieveUpdateAPIView)
 from taskapp.models import Role,Employee,Task, Comments
-from taskapp.serializers import TaskSerializer, CommentSerializer
+from taskapp.serializers import TaskSerializer, CommentsSerializer
 from employeetask import settings
 
 class TaskCreateView(CreateAPIView):
@@ -57,7 +57,7 @@ class EmployeeTaskRolewiseListView(ListAPIView):
             print(e)
 
 class CommentsCreateView(CreateAPIView):
-    serializer_class = CommentSerializer
+    serializer_class = CommentsSerializer
 
     def perform_create(self, serializer):
         id = self.kwargs.get('id')
@@ -65,7 +65,7 @@ class CommentsCreateView(CreateAPIView):
         comment_data = self.request.data.get('comment_text')
         if comment_data:
             comment_obj = Comments.objects.create(comment_text=comment_data,
-                                                  created_by=self.request.user.is_superuser, updated_by=self.request.user.is_superuser)
+                                                  created_by=self.request.user, updated_by=self.request.user)
             obj.comment.add(comment_obj)
         return obj
 
