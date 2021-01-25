@@ -38,6 +38,8 @@ The system should automatically create excel sheets on a weekly basis
         -removing all defined jobs is straight forward
                 python manage.py crontab remove
 
+        The excel should be created in Home screen(also implemented excel creation using schedule.That codes are commented in Views.py)
+
 
 
 
